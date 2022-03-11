@@ -1,0 +1,51 @@
+<div class="modal-content">
+    <div class="modal-header alert-success">
+        <h5 class="modal-title" id="exampleModalLabel">{{title}}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="bsModalRef.hide()">
+            <span>&times;</span>
+        </button>
+    </div>
+    <div class="modal-body crudForm">
+        <form class="ng-pristine" name="form" #f="ngForm">
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label text-right">Course Name: </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="" [(ngModel)]="courseObj.courseName"
+                        name="courseName" #courseName="ngModel">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label text-right">Duration: </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="" [(ngModel)]="courseObj.courseDuration"
+                        name="courseDuration" #courseDuration="ngModel">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label text-right">Description: </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="" [(ngModel)]="courseObj.description"
+                        name="description" #description="ngModel">
+                </div>
+            </div>
+
+            <!-- <div class="form-group row">
+          <label class="col-sm-4 col-form-label text-right">Active Status: </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="courseObj.activeStatus" name="activeStatus"
+              #activeStatus="ngModel">
+          </div>
+        </div> -->
+
+        </form>
+    </div>
+    <div class="modal-footer breadcrumb m-0 p-1 btn-all">
+        <button type="button" class="btn btn-primary" (click)="saveOrUpdate()">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="bsModalRef.hide()">Close</button>
+
+    </div>
+</div>

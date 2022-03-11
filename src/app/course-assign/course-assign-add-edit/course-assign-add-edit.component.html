@@ -1,0 +1,58 @@
+<div class="modal-content">
+    <div class="modal-header alert-success">
+        <h5 class="modal-title" id="exampleModalLabel">Course Assignment
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="bsModalRef.hide()">
+            <span>&times;</span>
+        </button>
+    </div>
+    <div class="modal-body crudForm">
+        <form class="ng-pristine" name="form" #f="ngForm">
+
+            <div class="form-group row">
+
+                <label class="col-sm-4 col-form-label text-right">Choose Teacher/Student: </label>
+                <div class="col-sm-8">
+                    <select class="form-control" [(ngModel)]="courseAssignObj.teacherFlag" name="courseAssignObj"
+                        #inputType="ngModel" (ngModelChange)="selectedTeachStuValue($event)">
+                        <option value="0" class="">Student</option>
+                        <option value="1" class="" selected>Teacher</option>
+                    </select>
+                </div>
+
+                <label class="col-sm-4 col-form-label text-right">Course Name: </label>
+                <div class="col-sm-8" typeAhead>
+                    <select class="form-control input-width-20" name="courseName" #inputType="ngModel"
+                        [(ngModel)]="courseAssignObj.courseId" (ngModelChange)="setValue($event)">
+                        <option *ngFor="let courseList of courseList.items; let i = index" [ngValue]="courseList.id">
+                            {{courseList.courseName}}</option>
+                    </select>
+                </div>
+
+                <label class="col-sm-4 col-form-label text-right">Name: </label>
+                <div class="col-sm-8" typeAhead>
+                    <select *ngIf="selectedTeachStu == 0 || courseAssignObj.teacherFlag == 0" class="form-control input-width-20" name="studentName"
+                        #inputType="ngModel" [(ngModel)]="courseAssignObj.assignId"
+                        (ngModelChange)="setValue($event)">
+                        <option *ngFor="let studentList of studentList.items; let i = index" [ngValue]="studentList.id">
+                            {{studentList.firstName}}</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-8" typeAhead>
+                    <select *ngIf="selectedTeachStu == 1 || courseAssignObj.teacherFlag == 1" class="form-control input-width-20" name="teacherName"
+                        #inputType="ngModel" [(ngModel)]="courseAssignObj.assignId">
+                        <option *ngFor="let teacherList of teacherList.items; let i = index" [ngValue]="teacherList.id">
+                            {{teacherList.firstName}}</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer breadcrumb m-0 p-1 btn-all">
+        <button type="button" class="btn btn-primary" (click)="saveOrUpdate()">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="bsModalRef.hide()">Close</button>
+    </div>
+</div>
